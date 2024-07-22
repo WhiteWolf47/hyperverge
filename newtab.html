@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage Widgets</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+    .widget {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="widget" id="google-slide">
+    <h2>Google Slide Integration</h2>
+    <iframe id="slide-frame" width="100%" height="300" frameborder="0" allowfullscreen="true"></iframe>
+  </div>
+  
+  <div class="widget" id="pomodoro-timer">
+    <h2>Pomodoro Timer</h2>
+    <div id="timer">25:00</div>
+    <button id="start-timer">Start</button>
+    <button id="reset-timer">Reset</button>
+  </div>
+  
+  <div class="widget" id="google-spreadsheet">
+    <h2>Google Spreadsheet</h2>
+    <iframe id="sheet-frame" width="100%" height="300" frameborder="0"></iframe>
+  </div>
+  
+  <div class="widget" id="google-form">
+    <h2>Google Form</h2>
+    <iframe id="form-frame" width="100%" height="300" frameborder="0"></iframe>
+  </div>
+  
+  <div class="widget" id="daily-growth-checklist">
+    <h2>Daily Growth Checklist</h2>
+    <ul id="checklist"></ul>
+    <input type="text" id="new-item" placeholder="Add new item">
+    <button id="add-item">Add</button>
+  </div>
+  
+  <div class="widget" id="announcements">
+    <h2>Announcements</h2>
+    <div id="announcement-text"></div>
+  </div>
+
+  <script src="newtab.js"></script>
+</body>
+</html>

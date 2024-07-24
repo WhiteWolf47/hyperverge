@@ -17,7 +17,7 @@ const Dashboard = (): ReactElement => {
         <Box gridColumn={{ xs: 'span 12', '2xl': 'span 8' }} order={{ xs: 0 }}>
           <TodaysSales />
         </Box>
-        <Box gridColumn={{ xs: 'span 12', lg: 'span 4' }} order={{ xs: 2, '2xl': 2 }}>
+        <Box gridColumn={{ xs: 'span 12', lg: 'span 4' }} order={{ xs: 1, '2xl': 1 }}>
           <PomodoroTimer />
         </Box>
         <Box gridColumn={{ xs: 'span 12', lg: 'span 8' }} order={{ xs: 2, '2xl': 2 }}>

@@ -10,7 +10,7 @@ const navItems: NavItem[] = [
   {
     id: 1,
     path: '/',
-    title: 'Dashboard',
+    title: 'Home',
     icon: 'mingcute:home-1-fill',
     active: true,
   },

@@ -8,7 +8,7 @@ import TopProducts from 'components/sections/dashboard/top-products/TopProducts'
 import TrendingNow from 'components/sections/dashboard/trending-now/TrendingNow';
 import Announcements from 'components/sections/dashboard/announcement/Announcement';
 import Earnings from 'components/sections/dashboard/earnings/Earnings';
-import Level from 'components/sections/dashboard/level/Level';
+import PomodoroTimer from 'components/sections/dashboard/pomodoro-timer/Pomodoro';
 
 const Dashboard = (): ReactElement => {
   return (
@@ -17,11 +17,11 @@ const Dashboard = (): ReactElement => {
         <Box gridColumn={{ xs: 'span 12', '2xl': 'span 8' }} order={{ xs: 0 }}>
           <TodaysSales />
         </Box>
-        <Box gridColumn={{ xs: 'span 12', lg: 'span 4' }} order={{ xs: 1, '2xl': 1 }}>
-          <Level />
+        <Box gridColumn={{ xs: 'span 12', lg: 'span 4' }} order={{ xs: 2, '2xl': 2 }}>
+          <PomodoroTimer />
         </Box>
         <Box gridColumn={{ xs: 'span 12', lg: 'span 8' }} order={{ xs: 2, '2xl': 2 }}>
-          <TopProducts />
+          <Announcements />
         </Box>
         <Box
           gridColumn={{ xs: 'span 12', md: 'span 6', xl: 'span 4' }}

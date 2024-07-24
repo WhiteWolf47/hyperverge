@@ -30,7 +30,7 @@ const navItems: NavItem[] = [
   },
   {
     id: 4,
-    path: '#!',
+    path: '/other-apps',
     title: 'Other Apps',
     icon: 'ant-design:appstore-outlined',
     active: false,

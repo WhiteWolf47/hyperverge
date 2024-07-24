@@ -6,6 +6,7 @@ import Splash from 'components/loading/Splash';
 import { rootPaths } from './paths';
 import paths from './paths';
 
+// Lazy load components
 const App = lazy<() => ReactElement>(() => import('App'));
 
 const MainLayout = lazy<({ children }: PropsWithChildren) => ReactElement>(
@@ -19,6 +20,7 @@ const Dashboard = lazy<() => ReactElement>(() => import('pages/dashboard/Dashboa
 const Login = lazy<() => ReactElement>(() => import('pages/authentication/Login'));
 const SignUp = lazy<() => ReactElement>(() => import('pages/authentication/SignUp'));
 const ErrorPage = lazy<() => ReactElement>(() => import('pages/error/ErrorPage'));
+const OtherApps = lazy<() => ReactElement>(() => import('pages/other-apps/OtherApps')); // Import the OtherApps component
 
 const routes: RouteObject[] = [
   {
@@ -29,7 +31,7 @@ const routes: RouteObject[] = [
     ),
     children: [
       {
-        path: paths.home,
+        path: paths.home, // Ensure `paths.home` is correctly defined
         element: (
           <MainLayout>
             <Suspense fallback={<PageLoader />}>
@@ -42,10 +44,14 @@ const routes: RouteObject[] = [
             index: true,
             element: <Dashboard />,
           },
+          {
+            path: paths.otherapps, // Ensure `paths.otherapps` is correctly defined
+            element: <OtherApps />, // Render the OtherApps component
+          },
         ],
       },
       {
-        path: rootPaths.authRoot,
+        path: rootPaths.authRoot, // Ensure this path is correctly set in `rootPaths`
         element: (
           <AuthLayout>
             <Suspense fallback={<PageLoader />}>
@@ -55,11 +61,11 @@ const routes: RouteObject[] = [
         ),
         children: [
           {
-            path: paths.login,
+            path: paths.login, // Ensure `paths.login` is correctly defined
             element: <Login />,
           },
           {
-            path: paths.signup,
+            path: paths.signup, // Ensure `paths.signup` is correctly defined
             element: <SignUp />,
           },
         ],
@@ -76,6 +82,6 @@ const options: { basename: string } = {
   basename: '/nickelfox',
 };
 
-const router: Partial<RouterProps> = createBrowserRouter(routes, options);
+const router = createBrowserRouter(routes, options);
 
 export default router;

@@ -81,9 +81,9 @@ const PomodoroTimer = () => {
 
   const handleFlashMessageClick = () => {
     setFlashMessage(false);
-    setIsBreak(false); // Reset break state
-    setTimeLeft(workDuration); // Reset time left to work duration
-    handleStartPause(); // Start the timer or resume
+    setIsBreak(false);
+    setTimeLeft(workDuration); 
+    handleStartPause();
   };
 
   const progressColor = isBreak
@@ -98,13 +98,13 @@ const PomodoroTimer = () => {
         p: 4,
         width: '400px',
         mx: 'auto',
-        position: 'relative', // Add position relative for absolute positioning of flash message
+        position: 'relative', 
       }}
     >
-      <Typography variant="h4" align="center" color="common.white" mb={5} mt={4}>
+      <Typography variant="h4" color="common.white" mb={5} mt={4}>
         Pomodoro Timer
       </Typography>
-      <Stack direction="column" alignItems="center" spacing={2}>
+      <Stack direction="column" alignItems="center" spacing={3}>
         <Box
           sx={{
             position: 'relative',
@@ -137,10 +137,9 @@ const PomodoroTimer = () => {
           <Box
             sx={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
+              px: 4,
+            py: 2,
+            borderRadius: 1,
               bgcolor: theme.palette.warning.main,
               color: theme.palette.warning.contrastText,
               display: 'flex',
@@ -151,6 +150,7 @@ const PomodoroTimer = () => {
               animation: 'flash 1s infinite', // Flash animation
               cursor: 'pointer',
               height: '100%',
+              gap: 10,
             }}
             onClick={handleFlashMessageClick}
           >

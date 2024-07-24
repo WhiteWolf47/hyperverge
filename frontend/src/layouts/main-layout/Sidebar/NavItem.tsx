@@ -13,8 +13,8 @@ const NavItem = ({ navItem, open }: { navItem: NavItemProps; open: boolean }) =>
         px: 5,
         borderRight: !open
           ? pathname === navItem.path
-            ? `3px solid ${theme.palette.primary.main}`
-            : `3px solid transparent`
+            ? `5px solid ${theme.palette.primary.main}`
+            : `5px solid transparent`
           : '',
       })}
     >

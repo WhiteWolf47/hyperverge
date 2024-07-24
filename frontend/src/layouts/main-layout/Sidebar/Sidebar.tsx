@@ -32,7 +32,11 @@ const Sidebar = ({ open }: { open: boolean }): ReactElement => {
           <Image
             src={open ? logoWithText : logo}
             alt={open ? 'logo with text' : 'logo'}
-            height={40}
+            sx={{
+              width: open ? 160 : 70,   
+              height: open ? 75 : 70,
+              transition: 'all 0.3s ease', 
+            }}
           />
         </Link>
       </Toolbar>

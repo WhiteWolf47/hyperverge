@@ -8,7 +8,13 @@ interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 const Image = ({ src, alt, sx, ...rest }: ImageProps) => (
-  <Box component="img" src={src} alt={alt} sx={sx} {...rest} />
+  <Box
+    component="img"
+    src={src}
+    alt={alt}
+    sx={{ width: '70px', height: '70px', ...sx }}  // Ensure auto width and height if needed
+    {...rest}
+  />
 );
 
 export default Image;

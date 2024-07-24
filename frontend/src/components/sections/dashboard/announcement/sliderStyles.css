@@ -1,0 +1,36 @@
+/* src/components/sliderStyles.css */
+.announcement-slider .slick-slide {
+    cursor: text; /* I-beam cursor */
+  }
+  
+  .announcement-slider .slick-dots {
+    position: absolute;
+    top:18rem;
+    width: 100%; 
+    text-align: center; 
+    margin: 0;
+    padding: 10px 0;
+    box-sizing: border-box;
+  }
+  
+  .announcement-slider .slick-dots li {
+    margin: 0 5px;
+  }
+  
+  .announcement-slider .slick-dots li button:before {
+    font-size: 10px; 
+    color: rgba(0, 0, 0, 0.3); 
+  }
+  
+  .announcement-slider .slick-dots li.slick-active button:before {
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .announcement-slider .slick-dots li.slick-active {
+    opacity: 1; 
+  }
+  
+  .announcement-slider .slick-dots li:not(.slick-active) {
+    opacity: 0.5; 
+  }
+  

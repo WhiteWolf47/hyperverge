@@ -23,7 +23,7 @@ const navItems: NavItem[] = [
   },
   {
     id: 3,
-    path: '#!',
+    path: '/google',
     title: 'Google Apps',
     icon: 'mingcute:google-fill',
     active: false,

@@ -1,5 +1,3 @@
-// src/components/Customers.tsx
-
 import { ReactElement } from 'react';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 import Slider from 'react-slick';
@@ -38,9 +36,29 @@ const sliderSettings = {
 };
 
 const Customers = (): ReactElement => {
-
   return (
-    <Paper sx={{ p: { xs: 4, sm: 8 }, height: 1 }}>
+    <Paper
+      sx={{
+        p: { xs: 4, sm: 8 },
+        height: 1,
+        position: 'relative',
+        borderRadius: '10px',
+        backgroundColor: 'background.paper',
+        boxShadow: '0 0 15px rgba(128, 0, 128, 0.7)', // Purple glow effect
+        border: '2px solid transparent', // Border for spacing
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: '-2px',
+          left: '-2px',
+          right: '-2px',
+          bottom: '-2px',
+          borderRadius: '10px',
+          border: '2px solid #800080', // Purple neon border
+          pointerEvents: 'none',
+        },
+      }}
+    >
       <Stack
         direction="row"
         justifyContent="space-between"

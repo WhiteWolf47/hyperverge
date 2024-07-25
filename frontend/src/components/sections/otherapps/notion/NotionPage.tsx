@@ -19,8 +19,9 @@ const NotionPage = () => {
         justifyContent: 'center', // Center alignment
         height: '100vh', // Full viewport height
         width: '100%', // Full width
+        border: '2px solid #800080', // Purple border
       }}
-        onClick={handleRedirect}
+      onClick={handleRedirect}
     >
       <Typography variant="h4" color="common.white" mb={5} mt={4}>
         Notion Page
@@ -29,7 +30,6 @@ const NotionPage = () => {
         sx={{
           width: '100%',
           height: '80vh', // Adjust height as needed
-          border: 'none', // No border
           borderRadius: 1, // Rounded corners
           overflow: 'hidden', // Hide overflow
           boxShadow: 2,

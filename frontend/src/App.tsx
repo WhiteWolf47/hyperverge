@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Outlet } from 'react-router-dom';
-// src/index.tsx or src/App.tsx
+import './index.css'
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

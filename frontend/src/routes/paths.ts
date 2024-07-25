@@ -10,4 +10,5 @@ export default {
   signup: `/${rootPaths.authRoot}/sign-up`,
   404: `/${rootPaths.errorRoot}/404`,
   otherapps: `/${rootPaths.homeRoot}/other-apps`,
+  google: `/${rootPaths.homeRoot}/google`,
 };

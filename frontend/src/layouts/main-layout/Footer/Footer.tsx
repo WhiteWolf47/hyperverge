@@ -17,22 +17,6 @@ const Footer = ({ open }: { open: boolean }): ReactElement => {
       pb={6.25}
       pl={{ xs: 3, sm: 5.25 }}
     >
-      <Typography variant="subtitle1" sx={{ textAlign: { xs: 'center', sm: 'right' } }}>
-        Made with{' '}
-        <Box component="span" sx={{ color: 'error.main', verticalAlign: 'middle' }}>
-          &#10084;
-        </Box>{' '}
-        by{' '}
-        <Link
-          href="https://themewagon.com/"
-          target="_blank"
-          rel="noopener"
-          aria-label="Explore ThemeWagon Website"
-          sx={{ color: 'text.primary', '&:hover': { color: 'primary.main' } }}
-        >
-          ThemeWagon
-        </Link>
-      </Typography>
     </Stack>
   );
 };

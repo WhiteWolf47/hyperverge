@@ -2,13 +2,13 @@ import { ReactElement, useState, useEffect } from 'react';
 import { Box, Paper, Typography, CircularProgress } from '@mui/material';
 
 const RandomQuote = (): ReactElement => {
-  const [quote, setQuote] = useState(null);
+  const [quote, setQuote] = useState<{ subtitle: string; author: string; color: string } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchQuote = async () => {
       try {
-      const response = await fetch('https://api.quotable.io/random?tags=productivity|motivational|work|team-spirit|optimistic');
+        const response = await fetch('https://api.quotable.io/random?tags=productivity|motivational|work|team-spirit|optimistic');
         const data = await response.json();
         setQuote({
           subtitle: data.content,
@@ -26,7 +26,28 @@ const RandomQuote = (): ReactElement => {
   }, []);
 
   return (
-    <Paper sx={{ p: { xs: 4, sm: 8 }, height: 1 }}>
+    <Paper
+      sx={{
+        p: { xs: 8, sm: 8 },
+        height: 1,
+        position: 'relative',
+        borderRadius: '10px',
+        border: '2px solid transparent', // Border for spacing
+        backgroundColor: 'background.paper', // Ensures the background color is `background.paper`
+        boxShadow: '0 0 15px rgba(128, 0, 128, 0.7)', // Purple glow effect
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: '-2px',
+          left: '-2px',
+          right: '-2px',
+          bottom: '-2px',
+          borderRadius: '10px',
+          border: '2px solid #800080', // Purple neon border
+          pointerEvents: 'none',
+        }
+      }}
+    >
       <Typography variant="h4" color="common.white" mb={1.25}>
         Today's Quote
       </Typography>
@@ -35,25 +56,25 @@ const RandomQuote = (): ReactElement => {
           <CircularProgress />
         </Box>
       ) : (
-        <Box sx={{ width: '100%'}}>
+        <Box sx={{ width: '100%', paddingTop: '23px' }}>
           {quote && (
             <>
-              <Typography 
-                variant="h6" 
-                color="text.primary" 
-                align="center" 
+              <Typography
+                variant="h6"
+                color="text.primary"
+                align="center"
                 mb={2}
-                sx={{ fontStyle: 'italic', lineHeight: 1.5, textAlign: 'center', paddingBottom:'50'}}
+                sx={{ fontStyle: 'italic', lineHeight: 1.5, textAlign: 'center', paddingBottom: '10px' }}
               >
                 "{quote.subtitle}"
               </Typography>
-                <Typography 
-                  variant="body2" 
-                  color="text.secondary" 
-                  sx={{ marginLeft: 2 , textAlign: 'center' }}
-                >
-                  - {quote.author}
-                </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ marginLeft: 2, textAlign: 'center' }}
+              >
+                - {quote.author}
+              </Typography>
             </>
           )}
         </Box>

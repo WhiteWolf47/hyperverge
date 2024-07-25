@@ -6,6 +6,7 @@ import {
   CircularProgress,
   Slider,
   Stack,
+  Paper,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
@@ -20,7 +21,7 @@ const PomodoroTimer = () => {
   const [flashMessage, setFlashMessage] = useState(false);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval;
 
     if (isActive && timeLeft > 0 && !isPaused) {
       interval = setInterval(() => {
@@ -41,9 +42,9 @@ const PomodoroTimer = () => {
     }
 
     return () => clearInterval(interval);
-  }, [isActive, timeLeft, isPaused, isBreak]);
+  }, [isActive, timeLeft, isPaused, isBreak, workDuration, breakDuration]);
 
-  const formatTime = (seconds: number) => {
+  const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
@@ -66,16 +67,16 @@ const PomodoroTimer = () => {
     setFlashMessage(false);
   };
 
-  const handleWorkDurationChange = (event: Event, newValue: number | number[]) => {
+  const handleWorkDurationChange = (event, newValue) => {
     if (!isActive) {
-      setWorkDuration(newValue as number);
-      setTimeLeft(newValue as number);
+      setWorkDuration(newValue);
+      setTimeLeft(newValue);
     }
   };
 
-  const handleBreakDurationChange = (event: Event, newValue: number | number[]) => {
+  const handleBreakDurationChange = (event, newValue) => {
     if (!isActive) {
-      setBreakDuration(newValue as number);
+      setBreakDuration(newValue);
     }
   };
 
@@ -91,17 +92,44 @@ const PomodoroTimer = () => {
     : theme.palette.success.main;
 
   return (
-    <Box
+    <Paper
       sx={{
         bgcolor: theme.palette.background.paper,
-        borderRadius: 4,
-        p: 4,
-        width: '400px',
-        mx: 'auto',
-        position: 'relative', 
+        borderRadius: '10px',
+        p: { xs: 5, sm: 8 }, // Add padding similar to Customers
+        mx: 'auto', // Center align horizontally
+        mt: 0, // Add margin-top to maintain the gap
+        mb: 1, // Add margin-bottom to maintain the gap
+        width: '100%',
+        maxWidth: 400, // Set a max-width to ensure consistency
+        height: 498, // Set a fixed height to match other components
+        position: 'relative',
+        border: '2px solid transparent',
+        boxShadow: '0 0 15px rgba(128, 0, 128, 0.7)', // Purple glow effect
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: '-2px',
+          left: '-2px',
+          right: '-2px',
+          bottom: '-2px',
+          borderRadius: '10px',
+          border: '2px solid #800080', // Purple neon border
+          pointerEvents: 'none',
+        },
+        '@keyframes flash': {
+          '0%, 50%, 100%': {
+            opacity: 1,
+          },
+          '25%, 75%': {
+            opacity: 0,
+          },
+        }
       }}
     >
-      <Typography variant="h4" color="common.white" mb={5} mt={4}>
+      <Typography variant="h4" color="common.white" mb={5} mt={1}  sx={{
+            paddingTop: 0,
+          }}>
         Pomodoro Timer
       </Typography>
       <Stack direction="column" alignItems="center" spacing={3}>
@@ -137,9 +165,13 @@ const PomodoroTimer = () => {
           <Box
             sx={{
               position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
               px: 4,
-            py: 2,
-            borderRadius: 1,
+              py: 2,
+              borderRadius: 1,
               bgcolor: theme.palette.warning.main,
               color: theme.palette.warning.contrastText,
               display: 'flex',
@@ -149,48 +181,48 @@ const PomodoroTimer = () => {
               textAlign: 'center',
               animation: 'flash 1s infinite', // Flash animation
               cursor: 'pointer',
-              height: '100%',
-              gap: 10,
             }}
             onClick={handleFlashMessageClick}
           >
             Take a break!
           </Box>
         )}
-        <Stack spacing={2} width="100%">
-          <Typography variant="body2" color="text.secondary">
-            Work Duration
-          </Typography>
-          <Slider
-            value={workDuration}
-            onChange={handleWorkDurationChange}
-            min={1 * 60}
-            max={25 * 60}
-            step={1 * 60}
-            valueLabelDisplay="auto"
-            valueLabelFormat={(value) => `${Math.floor(value / 60)}m`}
-            sx={{
-              color: theme.palette.success.main,
-            }}
-            disabled={isActive}
-          />
-          <Typography variant="body2" color="text.secondary">
-            Break Duration
-          </Typography>
-          <Slider
-            value={breakDuration}
-            onChange={handleBreakDurationChange}
-            min={1 * 60}
-            max={15 * 60}
-            step={1 * 60}
-            valueLabelDisplay="auto"
-            valueLabelFormat={(value) => `${Math.floor(value / 60)}m`}
-            sx={{
-              color: theme.palette.error.main,
-            }}
-            disabled={isActive}
-          />
-        </Stack>
+        {!flashMessage && (
+          <Stack spacing={2} width="100%">
+            <Typography variant="body2" color="text.secondary">
+              Work Duration
+            </Typography>
+            <Slider
+              value={workDuration}
+              onChange={handleWorkDurationChange}
+              min={1 * 60}
+              max={25 * 60}
+              step={1 * 60}
+              valueLabelDisplay="auto"
+              valueLabelFormat={(value) => `${Math.floor(value / 60)}m`}
+              sx={{
+                color: theme.palette.success.main,
+              }}
+              disabled={isActive}
+            />
+            <Typography variant="body2" color="text.secondary">
+              Break Duration
+            </Typography>
+            <Slider
+              value={breakDuration}
+              onChange={handleBreakDurationChange}
+              min={1 * 60}
+              max={15 * 60}
+              step={1 * 60}
+              valueLabelDisplay="auto"
+              valueLabelFormat={(value) => `${Math.floor(value / 60)}m`}
+              sx={{
+                color: theme.palette.error.main,
+              }}
+              disabled={isActive}
+            />
+          </Stack>
+        )}
         <Stack direction="row" spacing={2}>
           <Button
             variant="contained"
@@ -206,7 +238,7 @@ const PomodoroTimer = () => {
           </Button>
         </Stack>
       </Stack>
-    </Box>
+    </Paper>
   );
 };
 

@@ -7,7 +7,7 @@ const Form = () => {
   const [formUrl, setFormUrl] = useState('');
   const [showForm, setShowForm] = useState(false);
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormUrl(event.target.value);
   };
 
@@ -30,19 +30,7 @@ const Form = () => {
         height:'100%',
         maxWidth: 910, // Adjusted width to fit the iframe
         maxHeight: 500, // Adjusted height to fit the iframe    
-        boxShadow: '0 0 15px rgba(128, 0, 128, 0.7)',
-        position: 'relative',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: '-2px',
-          left: '-2px',
-          right: '-2px',
-          bottom: '-2px',
-          borderRadius: '10px',
-          border: '2px solid #800080',
-          pointerEvents: 'none',
-        }
+        border: '2px solid #800080'
       }}
     >
       <Typography variant="h4" color="common.white" mb={3}>

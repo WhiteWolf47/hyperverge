@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
@@ -21,7 +21,7 @@ const PomodoroTimer = () => {
   const [flashMessage, setFlashMessage] = useState(false);
 
   useEffect(() => {
-    let interval;
+    let interval: NodeJS.Timeout | undefined;
 
     if (isActive && timeLeft > 0 && !isPaused) {
       interval = setInterval(() => {
@@ -41,10 +41,14 @@ const PomodoroTimer = () => {
       }
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
   }, [isActive, timeLeft, isPaused, isBreak, workDuration, breakDuration]);
 
-  const formatTime = (seconds) => {
+  const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
@@ -67,16 +71,18 @@ const PomodoroTimer = () => {
     setFlashMessage(false);
   };
 
-  const handleWorkDurationChange = (event, newValue) => {
+  const handleWorkDurationChange = (newValue: number | number[]) => {
+    const value = Array.isArray(newValue) ? newValue[0] : newValue;
     if (!isActive) {
-      setWorkDuration(newValue);
-      setTimeLeft(newValue);
+      setWorkDuration(value);
+      setTimeLeft(value);
     }
   };
 
-  const handleBreakDurationChange = (event, newValue) => {
+  const handleBreakDurationChange = ( newValue: number | number[]) => {
+    const value = Array.isArray(newValue) ? newValue[0] : newValue;
     if (!isActive) {
-      setBreakDuration(newValue);
+      setBreakDuration(value);
     }
   };
 
@@ -104,32 +110,10 @@ const PomodoroTimer = () => {
         maxWidth: 400, // Set a max-width to ensure consistency
         height: 498, // Set a fixed height to match other components
         position: 'relative',
-        border: '2px solid transparent',
-        boxShadow: '0 0 15px rgba(128, 0, 128, 0.7)', // Purple glow effect
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: '-2px',
-          left: '-2px',
-          right: '-2px',
-          bottom: '-2px',
-          borderRadius: '10px',
-          border: '2px solid #800080', // Purple neon border
-          pointerEvents: 'none',
-        },
-        '@keyframes flash': {
-          '0%, 50%, 100%': {
-            opacity: 1,
-          },
-          '25%, 75%': {
-            opacity: 0,
-          },
-        }
+        border: '2px solid #800080'
       }}
     >
-      <Typography variant="h4" color="common.white" mb={5} mt={1}  sx={{
-            paddingTop: 0,
-          }}>
+      <Typography variant="h4" color="common.white" mb={5} mt={1} sx={{ paddingTop: 0 }}>
         Pomodoro Timer
       </Typography>
       <Stack direction="column" alignItems="center" spacing={3}>

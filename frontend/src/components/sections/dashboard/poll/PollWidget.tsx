@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Box,
   Typography,
   Button,
   Radio,
@@ -21,7 +20,7 @@ const PollWidget = () => {
   const pollQuestion = 'How do you feel about this Pomodoro session?';
   const pollOptions = ['Great!', 'Good', 'Okay', 'Bad'];
 
-  const handleOptionChange = (event) => {
+  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
   };
 
@@ -42,19 +41,7 @@ const PollWidget = () => {
     mb: 1,
     width: '100%',
     maxWidth: 500,
-    boxShadow: '0 0 15px rgba(128, 0, 128, 0.7)',
-    position: 'relative',
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: '-2px',
-      left: '-2px',
-      right: '-2px',
-      bottom: '-2px',
-      borderRadius: '10px',
-      border: '2px solid #800080',
-      pointerEvents: 'none',
-    }
+    border: '2px solid #800080'
   }}
 >
   

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, Button, Paper, Stack, Typography, TextField, IconButton } from '@mui/material';
+import  { useState } from 'react';
+import { Box, Paper, Stack, Typography, TextField, IconButton } from '@mui/material';
 import { Add as AddIcon, Close as CloseIcon } from '@mui/icons-material';
 
 const TodoList = () => {
@@ -31,20 +31,8 @@ const TodoList = () => {
         height: 1,
         position: 'relative',
         borderRadius: '10px',
-        border: '2px solid transparent',
         backgroundColor: 'background.paper', // Ensures the background color is `background.paper`
-        boxShadow: '0 0 15px rgba(128, 0, 128, 0.7)', // Purple glow effect
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: '-2px',
-          left: '-2px',
-          right: '-2px',
-          bottom: '-2px',
-          borderRadius: '10px',
-          border: '2px solid #800080', // Purple neon border
-          pointerEvents: 'none',
-        }
+       border: '2px solid #800080'
       }}
     >
       <Stack direction="row" justifyContent="space-between" alignItems="center" flexWrap="wrap" gap={2} mb={6}>

@@ -1,4 +1,4 @@
-import { Box, Link, Stack, Typography } from '@mui/material';
+import {Stack } from '@mui/material';
 import { useBreakpoints } from 'providers/BreakpointsProvider';
 import { ReactElement } from 'react';
 

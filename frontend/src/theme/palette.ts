@@ -33,8 +33,8 @@ const palette: PaletteOptions = {
     dark: pinkishRed[900],
   },
   background: {
-    default: stone[900],
-    paper: grey[900],
+    default: '#0d0f17',
+    paper: '#040129',
   },
   text: {
     primary: stone[600],

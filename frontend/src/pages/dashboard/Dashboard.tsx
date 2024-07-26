@@ -6,6 +6,7 @@ import PomodoroTimer from 'components/sections/dashboard/pomodoro-timer/Pomodoro
 import RandomQuote from 'components/sections/dashboard/random-quote/RandomQuote';
 import PollWidget from 'components/sections/dashboard/poll/PollWidget';
 import Form from 'components/sections/dashboard/googleform/Form';
+import Meet from 'components/sections/dashboard/Meet';
 
 const Dashboard = (): ReactElement => {
   return (
@@ -34,6 +35,9 @@ const Dashboard = (): ReactElement => {
       </Box>  
       <Box gridColumn={{ xs: 'span 12', md: 'span 6', xl: 'span 8' }} order={{ xs: 5, xl: 5, '2xl': 5 }}>
         <Form />
+      </Box>
+      <Box gridColumn={{ xs: 'span 12', md: 'span 12', xl: 'span 12' }} order={{ xs: 6, xl: 6, '2xl': 6 }}>
+        <Meet />
       </Box>
     </Box>
   );

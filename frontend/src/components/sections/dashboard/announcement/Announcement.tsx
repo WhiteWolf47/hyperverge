@@ -21,7 +21,7 @@ const sliderSettings = {
       {dots}
     </Box>
   ),
-  customPaging: (i: number) => (
+  customPaging: (_i: number) => (
     <Box 
       sx={{
         width: 8,
@@ -44,19 +44,7 @@ const Customers = (): ReactElement => {
         position: 'relative',
         borderRadius: '10px',
         backgroundColor: 'background.paper',
-        boxShadow: '0 0 15px rgba(128, 0, 128, 0.7)', // Purple glow effect
-        border: '2px solid transparent', // Border for spacing
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: '-2px',
-          left: '-2px',
-          right: '-2px',
-          bottom: '-2px',
-          borderRadius: '10px',
-          border: '2px solid #800080', // Purple neon border
-          pointerEvents: 'none',
-        },
+        border: '2px solid #800080'
       }}
     >
       <Stack

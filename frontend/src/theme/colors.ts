@@ -6,7 +6,7 @@ interface Color {
   400: string;
   500: string;
   600: string;
-  700: string;
+  700: string;  
   800: string;
   900: string;
   A100?: string;
@@ -52,8 +52,8 @@ export const green: Color = {
 };
 
 export const bluishCyan: Color = {
-  50: '#E2F5FE',
-  100: '#B5E6FB',
+  50: '#2A1B3D',
+  100: '#EDE8F5',
   200: '#84D6F9',
   300: '#56C6F6',
   400: '#36B9F5',
@@ -78,7 +78,7 @@ export const yellowOrange: Color = {
 };
 
 export const pinkishRed: Color = {
-  50: '#FFEBF0',
+  50: '#E0BBE4',
   100: '#FFCCD6',
   200: '#FB969F',
   300: '#F66B79',
@@ -116,3 +116,4 @@ export const stone: Color = {
   800: '#1D1E26',
   900: '#171821',
 };
+

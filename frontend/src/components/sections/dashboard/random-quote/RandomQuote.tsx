@@ -32,20 +32,8 @@ const RandomQuote = (): ReactElement => {
         height: 1,
         position: 'relative',
         borderRadius: '10px',
-        border: '2px solid transparent', // Border for spacing
         backgroundColor: 'background.paper', // Ensures the background color is `background.paper`
-        boxShadow: '0 0 15px rgba(128, 0, 128, 0.7)', // Purple glow effect
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: '-2px',
-          left: '-2px',
-          right: '-2px',
-          bottom: '-2px',
-          borderRadius: '10px',
-          border: '2px solid #800080', // Purple neon border
-          pointerEvents: 'none',
-        }
+        border: '2px solid #800080'
       }}
     >
       <Typography variant="h4" color="common.white" mb={1.25}>

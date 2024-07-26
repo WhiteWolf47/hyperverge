@@ -71,7 +71,7 @@ const PomodoroTimer = () => {
     setFlashMessage(false);
   };
 
-  const handleWorkDurationChange = (newValue: number | number[]) => {
+  const handleWorkDurationChange = (_: Event, newValue: number | number[]) => {
     const value = Array.isArray(newValue) ? newValue[0] : newValue;
     if (!isActive) {
       setWorkDuration(value);
@@ -79,7 +79,7 @@ const PomodoroTimer = () => {
     }
   };
 
-  const handleBreakDurationChange = ( newValue: number | number[]) => {
+  const handleBreakDurationChange = (_: Event, newValue: number | number[]) => {
     const value = Array.isArray(newValue) ? newValue[0] : newValue;
     if (!isActive) {
       setBreakDuration(value);
@@ -113,7 +113,9 @@ const PomodoroTimer = () => {
         border: '2px solid #800080'
       }}
     >
-      <Typography variant="h4" color="common.white" mb={5} mt={1} sx={{ paddingTop: 0 }}>
+      <Typography variant="h4" color="common.white" mb={5} mt={1}  sx={{
+            paddingTop: 0,
+          }}>
         Pomodoro Timer
       </Typography>
       <Stack direction="column" alignItems="center" spacing={3}>
